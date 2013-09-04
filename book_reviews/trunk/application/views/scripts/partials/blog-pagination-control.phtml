@@ -1,0 +1,46 @@
+<?php
+if ($this->pageCount){
+	// you need to add each of the request parameters to url
+	$params = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+	
+	// remove the system parameters
+	unset($params['module']);
+	unset($params['controller']);
+	unset($params['action']);
+	
+echo '<div class="pagination">' . PHP_EOL;
+	
+	echo '<!-- Previous page link -->' . PHP_EOL;
+	if (isset($this->previous)){ ?>
+  		<div class="nav-previous left">
+  			<a href="<?php echo $this->url(array('page' => $this->previous), 'blogList'); ?>">
+    			<span class="meta-nav">&lt;-</span> Post pi&ugrave; recenti
+  			</a>
+  		</div>
+	<?php } else { ?>
+  		<div class="nav-previous left"><span class="meta-nav">&lt;-</span> Post pi&ugrave; recenti</div> 
+	<?php } ?>
+
+	<!-- Numbered page links 
+	<?php foreach ($this->pagesInRange as $page){ ?>
+  		<?php if ($page != $this->current){ ?>
+    		<li>
+    			<a href="<?php echo $this->url(array('page' => $page), 'blogList'); ?>"><?php echo $page; ?></a>
+    		</li>
+  		<?php } else { ?>
+    		<li><span><?php echo $page; ?></span></li>
+  	<?php }}?>
+  	-->
+
+	<!-- Next page link -->
+	<?php if (isset($this->next)){ ?>
+  		<div class="nav-next right">
+  			<a href="<?php echo $this->url(array('page' => $this->next), 'blogList'); ?>">
+    			<span class="meta-nav">-&gt;</span> Post pi&ugrave; vecchi
+  			</a>
+  		</div>
+	<?php } else { ?>
+  		<div class="nav-next right"><span class="meta-nav">-&gt;</span> Post pi&ugrave; vecchi</div>
+	<?php } ?>
+</div>
+<?php } ?>

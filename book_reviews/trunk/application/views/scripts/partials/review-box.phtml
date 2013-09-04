@@ -1,0 +1,19 @@
+<section>
+	<div class="wp-post-image review-box">
+	
+    	<h3>Scheda del <?php echo $this->reviewType($this->content); ?></h3>
+    	<div>
+    		<?php echo $this->cover($this->content, 'right'); ?>
+    	
+    		Titolo originale: <?php echo ($this->content->originalTitle); ?><br>
+    		<?php echo ($this->content->italianTitle != '') ? ('Titolo italiano: ' . $this->content->italianTitle . '<br>') : null; ?>
+    		Autore: <?php echo $this->author->getFullName(); ?><br>
+    		<?php echo ($this->content->pages != '') ? ('Pagine: ' . $this->content->pages . '<br>') : null; ?>
+    		<?php echo ($this->content->editor != '') ? ('Editore: ' . $this->content->editor . '<br>') : null; ?>
+    		<?php echo ($this->content->actors != '') ? ('Attori: ' . $this->content->actors . '<br>') : null; ?>
+    		<?php echo ($this->content->nation != '') ? ('Nazione: ' . $this->content->nation . '<br>') : null; ?>
+    		<?php echo ($this->content->seasons != '') ? ('Stagioni: ' . $this->content->seasons . '<br>') : null; ?>
+    		<span class="rating stars"><?php echo $this->vote($this->content); ?></span>
+    	</div>
+    </div>
+</section>

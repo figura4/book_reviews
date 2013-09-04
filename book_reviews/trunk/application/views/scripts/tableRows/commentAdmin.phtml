@@ -1,0 +1,7 @@
+<tr>
+	<td>
+    	<a href='<?php echo $this->url(array('controller' => 'comment', 'action' => 'delete', 'id' => $this->id), 'default', true); ?>' onclick="return confirm('Are you sure you want to delete?')">Del</a>
+	</td>
+	<td><?php echo $this->author; ?></td>
+	<td><?php echo $this->createdOn; ?></td>
+</tr>

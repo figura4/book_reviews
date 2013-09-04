@@ -1,0 +1,34 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#authors").tablesorter(); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+
+<div class="post excerpt ">
+<div class="post-content hreview">
+    <header>
+		<h2>Autori recensiti</h2>
+	</header>
+
+	<p>
+		Questi sono gli autori recensiti da figura4.
+	</p>
+
+	<table id="authors" class="tablesorter">
+    	<thead>
+    	<tr>
+    	    <th scope="col" width="200">Nome</th>
+   	     	<th scope="col">Numero Recensioni</th>
+   	 	</tr>
+    	</thead>
+    	<tbody>
+    	<?php 
+    		$this->partialLoop()->setObjectKey('item');
+    		echo $this->partialLoop('tableRows/author.phtml', $this->items); 
+    	?>
+    	</tbody>
+	</table>
+</div>
+</div>

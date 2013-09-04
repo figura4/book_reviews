@@ -1,0 +1,27 @@
+<div class="post excerpt ">
+<h2>Amministrazione quotes</h2>
+
+<?php echo $this->form;?>
+
+<p>
+<?php 
+	echo '<a href="' . $this->url(array('controller' => 'quote', 'action' => 'create'), 'default', true) . '" title="create">New</a>';
+?>
+</p>
+
+<table width="935" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <th scope="col" width="70"></th>
+        <th scope="col" width="50">Recensione</th>
+        <th scope="col" width="170">Random</th>
+    </tr>
+    <?php 
+    	echo $this->partialLoop('tableRows/quoteAdmin.phtml', $this->paginator);
+    ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginator,
+                                            'Sliding',
+                                            'partials/pagination-control.phtml'); ?>
+
+</div>

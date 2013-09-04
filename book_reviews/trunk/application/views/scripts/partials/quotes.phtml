@@ -1,0 +1,17 @@
+<?php 
+	$quotes = $this->content->getQuotes();
+	if (is_array($quotes) && count($quotes)>0) {
+?>
+
+<section>
+ 	<h3>Quotes</h3>
+ 	<?php 
+ 		foreach ($quotes as $quote) { ?>
+			<blockquote>
+				<?php echo $quote->body; ?><br>
+				<?php if ($quote->source != '') echo '- ' . $quote->source; ?>
+			</blockquote>
+	<?php }	?>
+</section>
+
+<?php } ?>

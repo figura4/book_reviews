@@ -1,0 +1,38 @@
+<?php
+    foreach ($this->paginator as $content) {
+    	$tags = $content->getTags();
+    	$type = $content->type; ?>
+
+		<div class="post excerpt ">
+			<header>
+				<div class="bubble">
+					<a href="<?php echo $this->friendlyUrl($content, $type); ?>">
+						<?php echo $content->getCommentsNumber(); ?>
+					</a>
+				</div>
+				<h2 class="title">
+					<a href="<?php echo $this->friendlyUrl($content, $type); ?>" rel="bookmark">
+						<?php echo ($content->type != 'content') ? $content->getTitle() : $content->pageTitle ?>
+					</a>
+				</h2>
+				<?php echo $this->partial('partials/post-info.phtml', array('content' => $content)); ?>
+			</header><!--.header-->
+	
+			<div class="post-content image-caption-format-1">
+				<?php  if ($type != 'content') { ?>
+				<a href="<?php echo $this->friendlyUrl($content, $type); ?>" rel="nofollow" class="featured-thumbnail">		 
+					<div class="featured-thumbnail">
+						<?php echo $this->cover($content, 'attachment-featured wp-post-image'); ?>
+					</div>															
+				</a>
+				<?php } ?>
+				<?php echo $content->getPreview(600, '(...)'); ?>
+				<p class="more">
+					<a href="<?php echo $this->friendlyUrl($content, $type); ?>">Leggi Tutto...</a>
+				</p>
+			</div>
+		</div><!--.post excerpt-->
+<?php } 
+
+		echo $this->paginationControl($this->paginator, 'Sliding', 'partials/home-pagination-control.phtml');
+?>

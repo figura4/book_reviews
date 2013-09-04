@@ -1,0 +1,28 @@
+<div class="post excerpt ">
+<?php
+    foreach ($this->paginator as $content) {
+    	$tags = $content->getTags();
+    	echo '<div class="post excerpt ">';
+    		echo '<header>';
+    			echo '<div class="bubble"><a href="' . $this->friendlyUrl($content, 'content') . '">' . $content->getCommentsNumber() . '</a></div>';
+    			echo '<h2 class="title">';
+    				echo '<a href="' . $this->friendlyUrl($content, 'content') . '" rel="bookmark">';
+    					echo $this->escape($content->pageTitle);
+    				echo '</a>';
+    			echo '</h2>';
+    			echo $this->partial('partials/post-info.phtml', array('content' => $content));
+    		echo '</header><!--.header-->';
+    		
+    		echo '<div class="post-content image-caption-format-1">';
+    			echo $content->getPreview(600, '(...)');
+    			echo '<p class="more"><a href="' . $this->friendlyUrl($content, 'content') . '">Leggi Tutto...</a></p>';
+    		echo '</div>';
+    	echo '</div><!--.post excerpt-->';
+    }
+    
+    echo $this->paginationControl($this->paginator,
+    		'Sliding',
+    		'partials/blog-pagination-control.phtml'
+    );
+?>
+</div>

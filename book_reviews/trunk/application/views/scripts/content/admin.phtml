@@ -1,0 +1,39 @@
+<div class="post excerpt ">
+<h2>Amministrazione post</h2>
+
+
+<?php echo $this->form; ?>
+
+<p>
+<?php 
+	echo '<a href="' . $this->url(array('controller' => 'content', 'action' => 'create-content'), 'default', true) . '" title="create">Nuovo post</a>';
+	echo ' | ';
+	echo '<a href="' . $this->url(array('controller' => 'content', 'action' => 'create-review', 'type' => 'book'), 'default', true) . '" title="create">Nuova recensione libro</a>';
+	echo ' | ';
+	echo '<a href="' . $this->url(array('controller' => 'content', 'action' => 'create-review', 'type' => 'tv'), 'default', true) . '" title="create">Nuova recensione serie tv</a>';
+	echo ' | ';
+	echo '<a href="' . $this->url(array('controller' => 'content', 'action' => 'create-review', 'type' => 'movie'), 'default', true) . '" title="create">Nuova recensione film</a>';
+?>
+</p>
+
+<table width="935" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <th scope="col" width="120"></th>
+        <th scope="col" width="150">Titolo</th>
+        <th scope="col" width="80">Tipo</th>
+        <th scope="col" width="80">Pubblicato</th>
+        <th scope="col" width="70">Data pubblicazione</th>
+    </tr>
+    <?php 
+    	$this->partialLoop()->setObjectKey('row');
+    	echo $this->partialLoop('tableRows/contentAdmin.phtml', $this->paginator); 
+    ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginator,
+                                            'Sliding',
+                                            'partials/pagination-control.phtml'); ?>
+                                            
+</div>
+
+

@@ -1,0 +1,21 @@
+<header class="main-header">
+	<div class="container">
+		<div id="header">
+			<h1 id="logo">
+				<a href="/"><?php echo $this->layout()->pageTitle; ?></a>
+			</h1><!-- END #logo -->
+			<blockquote id="randomquote">
+				<?php 
+					$quote = Zend_Registry::get('quoteMapper')->getRandomQuote();
+					$review = $quote->getReview();
+					echo $quote->body;
+					echo '<br>';
+					//echo ($quote->source == '') ? '' : "<br>- $quote->source"
+					echo '<a href="' . $this->friendlyUrl($review, $review->type) . '">';
+						echo $review->getAuthor()->getFullName() . ' - ' . $review->getTitle();
+					echo '</a>';
+				?>
+			</blockquote>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,13 @@
+<div class="post excerpt ">
+	<div class="post-content">
+    	<header>
+    	    <h2 class="title"><?php echo $this->content->pageTitle; ?></h2>
+    		<time pubdate datetime="2011-10-09T14:28-08:00"></time> 
+    		<?php echo $this->partial('partials/post-info.phtml', array('content' => $this->content)); ?>
+    	</header>
+    
+    	<?php echo $this->content->body; ?>
+    
+		<?php echo $this->partial('partials/comments.phtml', array('content' => $this->content, 'form' => $this->form)); ?>
+	</div>
+</div>

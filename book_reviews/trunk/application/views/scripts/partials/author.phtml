@@ -1,0 +1,10 @@
+<section>
+ 	<div class="wp-post-image">
+		<?php
+			echo '<h3>L\'autore</h3>';
+			echo $this->authorPicture($this->author, 'right');
+			echo '<div>' . $this->author->getBioPreview(400, '(...)') . '</div>'; 
+			echo '<p class="more"><a href="' . $this->friendlyUrl($this->author, 'author') . '">Leggi Tutto...</a></p>';
+		?>
+	</div>
+</section>

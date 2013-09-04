@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html crossriderapp2258="true" class=" js flexbox no-touch rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio" dir="ltr" lang="it-IT">
+
+<?php echo $this->render('_head.phtml'); ?>
+
+<body>
+	<?php echo $this->render('_header.phtml'); ?>
+		
+	<?php echo $this->render('_menu.phtml'); ?>
+ 		
+ 	<div id="page">
+ 		<div class="content">
+ 			<article class="article">
+				<div id="content_box">
+					<?php echo $this->layout()->content ?>	
+				</div>
+			</article>
+			<?php echo $this->render('_sidebar.phtml'); ?>
+		</div>
+	</div>
+	
+	<?php echo $this->render('_footer.phtml'); ?>
+</body>
+
+</html>

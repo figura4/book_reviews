@@ -1,0 +1,25 @@
+<div class="post excerpt ">
+	<header>
+	<?php 
+		echo '<h2>' . $this->author->getFullName() . '</h2>';   
+	?>
+	</header> 
+	<?php 
+	echo $this->authorPicture($this->author);
+	echo $this->author->bio;
+	echo '<p><a href ="' . $this->author->bioUrl . '" rel="nofollow">Fonte</a></p>';
+	
+	echo '<section>';
+		echo "<h3>Le opere recensite</h3>";
+		echo '<ul>';
+		foreach ($this->contents as $work) {
+			echo '<li>';
+				echo'<a href="' . $this->friendlyUrl($work, $work->type) . '">'; 
+					echo $work->originalTitle;
+		    	echo '</a>';
+			echo '</li>';
+		}
+		echo '</ul>';
+	echo '</section>';
+	?>
+</div>

@@ -1,0 +1,8 @@
+User-agent: * 
+Disallow: /images/authors/
+Disallow: /images/covers/
+Disallow: /images/images/
+Disallow: /images/avatars/
+Disallow: /images/pictures/
+Disallow: /user/
+Sitemap: http://figura4.com/sitemap

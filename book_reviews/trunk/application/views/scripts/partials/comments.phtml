@@ -1,0 +1,26 @@
+<?php 
+	$comments = $this->content->getComments();
+	if (is_array($comments) && count($comments)>0) { ?>
+		<footer id="commentform">
+		<h3>Commenti</h3>
+ 		<ol id="comments" class="commentlist">
+ 			<?php 
+ 			foreach ($comments as $comment) { ?>
+				<li>
+					<?php echo $this->avatar($comment); ?>
+					<p class="comment-meta">Postato da <strong><?php echo $this->escape($comment->author); ?></strong> il <?php echo $this->formatDate($comment->createdOn);; ?></p>
+					<p><?php echo $this->escape($comment->body); ?></p>
+				</li>
+			<?php }	?>
+		</ol>
+		<h4>Scrivi un commento</h4>
+		<?php echo $this->form; ?>
+		</footer>
+	<?php } else { ?>
+		<footer id="commentform">
+			<h3>Commenti</h3>
+			<p>Commenta per primo!</p>
+			<?php echo $this->form; ?>
+		</footer>
+	<?php } ?>
+

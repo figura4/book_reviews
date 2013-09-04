@@ -1,0 +1,27 @@
+<tr>
+	<td>
+		<?php 
+			$controller = 'content';
+			$action = ($this->row->type == 'content') ? 'edit-content' : 'edit-review' ; 
+			$type = ($this->row->type == 'content') ? null : $this->row->type ;
+			$url = array(
+					'controller' => $controller, 
+					'action' => $action, 
+					'id' => $this->row->id
+				);
+			if (!is_null($type))
+				$url['type'] = $type;
+		?>
+		<a href='<?php echo $this->url($url, 'default', true); ?>'>Edit</a> |
+    	<a href='<?php echo $this->url(array('controller' => 'content', 'action' => 'delete', 'id' => $this->row->id), 'default', true); ?>' onclick="return confirm('Are you sure you want to delete?')">Del</a> |
+    	<?php if($this->row->type != 'content') { ?> 
+    		<a href='<?php echo $this->url(array('controller' => 'quote', 'action' => 'create', 'contentId' => $this->row->id), 'default', true); ?>'>Add quote</a>
+    	<?php } ?>
+	</td>
+	<td><?php echo $this->escape($this->row->pageTitle); ?></td>
+	<td><?php echo $this->escape($this->row->type); ?></td>
+	<td><?php echo $this->row->published? 'YES' : 'NO'; ?></td>
+	<td>
+    	<?php echo $this->formatDate($this->row->pubDate); ?>
+	</td>
+</tr>

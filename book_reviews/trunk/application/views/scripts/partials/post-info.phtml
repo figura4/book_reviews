@@ -1,0 +1,28 @@
+<?php 
+	$tags = $this->content->getTags();
+	$tagsarray = array();
+	foreach ($tags as $tag) {
+		$tagsarray[] = '<a href="' . $this->friendlyUrl($tag, 'tag') . '" rel="category tag">' . $this->escape($tag->name) . '</a>';
+	}
+	$tagsHtml = implode(', ', $tagsarray);
+	if ($this->content->type != 'content') {
+		$type = 'Recensione ' . $this->reviewType($this->content) . ', ';
+	} else {
+		$type = 'Blog, ';
+	}
+?>
+
+<div class="post-info">
+	<span class="reviewer vcard">
+		<span class="theauthor fn nickname">
+			Figura4
+		</span>
+		
+		<time class="dtreviewed" title="<?php echo $this->formatDate($this->content->createdOn, false); ?>">
+			<?php echo $this->content->createdOn; ?>
+		</time>
+	</span>
+	<span class="thecategory">
+		<?php echo $type . $tagsHtml; ?>
+	</span>
+</div>

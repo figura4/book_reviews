@@ -1,0 +1,52 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#tags").tablesorter({
+        	// define a custom text extraction function 
+        	textExtraction: function(node) { 
+          		// check you're at the right column
+          		if ($(node).find('.stars').length == 1) {
+            		// extract data from markup and return it  
+            		return node.childNodes[0].innerHTML;
+          		}
+          		else {
+            		return $(node).text();
+          		}
+        	} 
+        }); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+<div class="post excerpt ">
+<h2><?php echo $this->escape($this->tag->name); ?></h2>
+
+<p><?php echo $this->escape($this->tag->description); ?></p>
+
+<table id="tags" class="tablesorter">
+	<thead>
+    <tr>
+       	<th>Voto</th>
+       	<th>Titolo</th>
+       	<th>Autore</th>
+   </tr>
+   </thead>
+ 	 
+ 	<tbody>  
+	<?php foreach ($this->contents as $content) { ?>
+	<tr>	
+		<td><span class="stars"><?php echo $this->vote($content); ?></span></td>
+		<td>
+			<a href="<?php echo $this->friendlyUrl($content, $content->type) ?>" title="Leggi la recensione">
+				<?php echo $content->pageTitle; ?>
+    		</a>
+    	</td>
+		<td>
+			<a href="<?php echo $this->friendlyUrl($content->getAuthor(), 'author') ?>" title="Leggi le altre recensioni per <?php echo $this->escape($content->getAuthor()->getFullName()); ?>">
+				<?php echo $content->getAuthor()->getFullName(true); ?>
+			</a>
+		</td>
+	</tr>
+	<?php } ?>
+	</tbody>    
+</table>
+</div>

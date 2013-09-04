@@ -1,0 +1,43 @@
+<?php $this->inlineScript()->captureStart() ?>
+$(document).ready(function() 
+    { 
+        $("#reviews").tablesorter({
+			// define a custom text extraction function 
+        	textExtraction: function(node) { 
+          		// check you're at the right column
+          		if ($(node).find('.stars').length == 1) {
+            		// extract data from markup and return it  
+            		return node.childNodes[0].innerHTML;
+          		}
+          		else {
+            		return $(node).text();
+          		}
+        	} 
+        }); 
+    } 
+); 
+<?php $this->inlineScript()->captureEnd() ?>
+
+<div class="post excerpt ">
+<div class="post-content hreview">
+    <header>
+		<h2>Lista recensioni</h2>
+	</header>
+	<?php echo $this->pageText; ?>
+	<table id="reviews" class="tablesorter">
+		<thead>
+    	<tr>
+    		<th>Voto</th>
+        	<th>Titolo</th>
+        	<th>Autore</th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<?php 
+    		$this->partialLoop()->setObjectKey('row');
+    		echo $this->partialLoop('tableRows/review.phtml', $this->items); 
+    	?>
+    	</tbody>
+	</table>
+</div>
+</div>

@@ -1,0 +1,20 @@
+#header h1, #header h2 {
+	text-indent: -999em;
+	min-width:200px; margin-top: 0;
+}
+
+#header h1 a, #header h2 a{
+	background: url(../images/images/logo.png) no-repeat;
+	min-width: 200px;
+	display: block;
+	min-height: 80px;
+	line-height: 28px;
+}
+							
+.more a, .bubble a:hover, #commentform input#submit {
+	background-color: #79ACCD;
+}
+
+a, .title a:hover, #navigation ul ul li a:hover, #navigation > ul > li > a:hover {
+	color:#79ACCD;
+}

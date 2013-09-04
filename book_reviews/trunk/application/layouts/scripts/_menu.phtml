@@ -1,0 +1,122 @@
+<div class="container">
+	<div class="secondary-navigation">
+		<nav id="navigation">
+			<ul class="menu">
+				<li class="menu-item"><a href="/">Home</a></li>
+				<li class="menu-item">
+					<a href="javascript: void(0)">Recensioni per genere</a>
+					<ul>
+						<li class="menu-item">
+							<a href="/tag/4/fantascienza">Fantascienza</a>
+							<ul>
+								<li>
+									<a href="/tag/23/hard-sf">Hard / Tecnologica</a>
+								</li>
+								<li>
+									<a href="/tag/25/soft-sf">Soft / Umanistica</a>
+								</li>
+								<li>
+									<a href="/tag/15/post-apocalittica">Post apocalittica</a>
+								</li>
+								<li>
+									<a href="/tag/5/space-opera">Space opera</a>
+								</li>
+								<li>
+									<a href="/tag/21/cyberpunk">Cyberpunk &amp; Postcyberpunk</a>
+								</li>
+								<li>
+									<a href="/tag/33/steampunk">Steampunk</a>
+								</li>
+								<li>
+									<a href="/tag/16/utopia">Utopica</a>
+								</li>
+								<li>
+									<a href="/tag/7/distopia">Distopica</a>
+								</li>
+								<li>
+									<a href="/tag/32/xenofiction">Xenofiction</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="/tag/31/fantasy">Fantasy</a>
+							<ul>
+								<li>
+									<a href="/tag/8/high-fantasy">High / Epico</a>
+								</li>
+								<li>
+									<a href="/tag/62/heroic-fantasy">Eroico</a>
+								</li>
+								<li>
+									<a href="/tag/20/low-fantasy">Low</a>
+								</li>
+								<li>
+									<a href="/tag/39/fantasy-storico">Fantasy storico</a>
+								</li>
+								<li>
+									<a href="/tag/26/dark-fantasy">Dark fantasy</a>
+								</li>
+								<li>
+									<a href="/tag/61/new-weird">New Weird</a>
+								</li>
+								<li>
+									<a href="/tag/64/sword-sorcery">Sword &amp; Sorcery</a>
+								</li>
+								<li>
+									<a href="/tag/12/urban-fantasy">Urban Fantasy</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="/tag/65/altro">Altro</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-item">
+					<a href="javascript: void(0)">Recensioni per tipo</a>
+					<ul>
+						<li>
+							<a href="/recensioni/libri">Libri, romanzi e fumetti</a>
+						</li>
+						<li>
+							<a href="/recensioni/film">Film e cortometraggi</a>
+						</li>
+						<li>
+							<a href="/recensioni/tv">Serie Tv</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-item"><a href="/blog">Blog</a></li>
+				<li class="menu-item"><a href="/links">Links</a></li>
+				<li class="menu-item"><a href="/about">Contatti</a></li>
+				<?php 
+					$auth = Zend_Auth::getInstance();
+					if($auth->hasIdentity()) {
+						$identity = $auth->getIdentity();
+						$role = strtolower($identity->role);
+						if ($role == 'admin') { ?>
+							<li class="menu-item"><a href="#">Admin</a>
+								<ul>
+									<li><a href="<?php echo $this->url(array('controller' => 'content', 'action' => 'admin'), 'default', true); ?>">Posts</a></li>
+									<li><a href="<?php echo $this->url(array('controller' => 'author', 'action' => 'admin'), 'default', true); ?>">Autori</a></li>
+									<li><a href="<?php echo $this->url(array('controller' => 'quote', 'action' => 'admin'), 'default', true); ?>">Quotes</a></li>
+									<li><a href="<?php echo $this->url(array('controller' => 'tag', 'action' => 'admin'), 'default', true); ?>">Tags</a></li>
+									<li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'admin'), 'default', true); ?>">Utenti</a></li>
+									<li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'logout'), 'default', true); ?>">Logout</a></li>
+								</ul>
+							</li>
+				<?php }} ?>
+			</ul>										
+			<select>
+				<option value="" selected="selected">Go to...</option>
+				<option value="/">Home</option>
+				<option value="/recensioni/libri">Libri</option>
+				<option value="/recensioni/film">Film</option>
+				<option value="/recensioni/tv">Serie Tv</option>
+				<option value="blog">Misc</option>
+				<option value="links">Links</option>
+				<option value="about">Contatti</option>
+			</select>
+		</nav>
+	</div>
+</div>

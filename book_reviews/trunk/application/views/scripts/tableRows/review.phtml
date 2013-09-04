@@ -1,0 +1,16 @@
+<tr>
+	<td><span class="stars"><?php echo $this->vote($this->row); ?></span></td>
+	<td>
+		<?php 
+			echo '<a href="' . $this->friendlyUrl($this->row, $this->row->type) . '">';
+				echo $this->row->getTitle(); 
+			echo '</a>';
+		?>
+	</td>
+	<td>
+		<?php $author = $this->row->getAuthor(); ?>
+		<a href="<?php echo $this->friendlyUrl($author, 'author'); ?>">
+			<?php echo $author->getFullName(true); ?>
+		</a>
+	</td>
+</tr>
